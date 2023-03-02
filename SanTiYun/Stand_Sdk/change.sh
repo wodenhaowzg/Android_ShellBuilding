@@ -228,6 +228,12 @@ if [[ -d $tempSourceV8aJniDir ]]; then
                 rm $tempSourceV8aJniDir$unitySo1
             fi
         fi
+
+        if [ $audioEffectModule -eq 0 ];then
+            if [[ -f $tempSourceV8aJniDir$audioSo2 ]]; then
+                rm $tempSourceV8aJniDir$audioSo2
+            fi
+        fi
     fi
 fi
 
@@ -530,9 +536,27 @@ if [[ $branch_jjyy -eq 1 ]]; then
     executeCommand $targetFileName $targetSearch $targetFilePathAbs $replace $replaceContent
 fi
 
+if [[ $branch_tctd -eq 1 ]]; then
+    targetFilePath=$GlobalConfig
+    targetFileName="GlobalConfig"
+    targetFilePathAbs=$sourceTempDir$targetFilePath;
+    targetSearch='mBranch';
+    replaceContent="public"$spaceTag"static"$spaceTag"int"$spaceTag"mBranch"$spaceTag"="$spaceTagce"LocalSDKConstants.BRANCH_CLIENT_TC;";
+    executeCommand $targetFileName $targetSearch $targetFilePathAbs $replace $replaceContent
+fi
+
+if [[ $branch_yq -eq 1 ]]; then
+    targetFilePath=$GlobalConfig
+    targetFileName="GlobalConfig"
+    targetFilePathAbs=$sourceTempDir$targetFilePath;
+    targetSearch='mBranch';
+    replaceContent="public"$spaceTag"static"$spaceTag"int"$spaceTag"mBranch"$spaceTag"="$spaceTagce"LocalSDKConstants.BRANCH_CLIENT_YQ;";
+    executeCommand $targetFileName $targetSearch $targetFilePathAbs $replace $replaceContent
+fi
+
 #----------------------------------------------------------------------------------------------------------
 
-read -p "是否开始打包apk验证aar? 0表示不验证 : " aaaad
+read -p "输入SDK打包日期，不输入代表今天:" aarDate2222
 
 # 开始打包
 desDir="/Users/wangzhiguo/Desktop/Temporary-Files/SDK_Kit/TTTRtcEngine_AndroidKitWrap/TTTRtcEngine_AndroidKit";
@@ -557,7 +581,7 @@ if [[ isSyncOtherDemo == 1 ]]; then
 fi
 
 # 还原文件
-. /Users/wangzhiguo/Desktop/sh_warehouse/MoMo_Package/restore.sh;
+. /Users/wangzhiguo/Downloads/Learns/MyGithubs/Android_ShellBuilding/SanTiYun/Stand_Sdk/restore.sh;
 
 rm -rf $desDir"/temp"
 unzip -o "$desDir/$targetAAR" -d $desDir"/temp"

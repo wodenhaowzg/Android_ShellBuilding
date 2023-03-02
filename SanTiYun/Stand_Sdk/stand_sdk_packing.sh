@@ -16,9 +16,9 @@ videoModule=1
 rtmpModule=1
 ijkModule=1
 unitySdk=0
-audioEffectModule=0
+audioEffectModule=1
 
-version_number="2.7.0"
+version_number="2.7.1"
 
 setModule(){
     armv8a=$1
@@ -43,6 +43,7 @@ elif [[ $branch -eq $v7_stand_sdk_video_ijk ]]; then
 elif [[ $branch -eq $v7_stand_sdk_voice ]]; then
     setModule 0 0 0 0
     version_type="Voice"
+    audioEffectModule=0
 elif [[ $branch -eq $v8_stand_sdk_video ]]; then
     setModule 1 1 1 0
 elif [[ $branch -eq $v8_stand_sdk_video_ijk ]]; then
@@ -50,6 +51,7 @@ elif [[ $branch -eq $v8_stand_sdk_video_ijk ]]; then
 elif [[ $branch -eq $v8_stand_sdk_voice ]]; then
     setModule 1 0 0 0
     version_type="Voice"
+    audioEffectModule=0
 fi
 
-. /Users/wangzhiguo/Desktop/sh_warehouse/MoMo_Package/change.sh;
+. /Users/wangzhiguo/Downloads/Learns/MyGithubs/Android_ShellBuilding/SanTiYun/Stand_Sdk/change.sh

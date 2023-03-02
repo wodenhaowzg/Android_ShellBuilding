@@ -46,9 +46,6 @@ if [ $videoModule -eq 0 ];then
 	targetFileName='/wstechapi/libs/armeabi-v7a/libcodec_ttt.so';
 	cpBaleSourceToSource;
 
-	targetFileName='/wstechapi/libs/armeabi-v7a/libenc.so';
-	cpBaleSourceToSource;
-
 	targetFileName='/wstechapi/libs/armeabi-v7a/libyuv_ttt.so';
 	cpBaleSourceToSource;
 fi
@@ -109,6 +106,11 @@ else
 
 	if [[ $unitySdk -eq 0 ]]; then
 		targetFileName=$wstechapiLibsDir$v8aJniDir$unitySo1;
+		cpBaleSourceToSource
+	fi
+
+	 if [ $audioEffectModule -eq 0 ];then
+		targetFileName=$wstechapiLibsDir$v8aJniDir$audioSo2;
 		cpBaleSourceToSource
 	fi
 fi

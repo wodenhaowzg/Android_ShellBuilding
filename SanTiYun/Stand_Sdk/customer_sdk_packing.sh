@@ -14,6 +14,7 @@ branch_jykt=12
 branch_jyb=13
 branch_tyjh=14
 branch_ty=15
+branch_yq=16
 
 armv8a=0
 videoModule=1
@@ -22,7 +23,9 @@ ijkModule=1
 unitySdk=0
 audioEffectModule=0
 
-version_number="2.7.0"
+
+version_number="2.7.1"
+
 
 setModule(){
     armv8a=$1
@@ -45,13 +48,13 @@ echo "12 --- 家有课堂"
 echo "13 --- 教育版"
 echo "14 --- 泰岳建行"
 echo "15 --- 泰岳"
+echo "16 --- 椰趣"
 
 read -p "要给哪个客户打包？" branch
 
 if [ $branch -eq $branch_dke ] || [ $branch -eq $branch_hz ] || [ $branch -eq $branch_jykt ] ; then
     setModule 0 1 1 0
-elif [ $branch -eq $branch_tctd ] || [ $branch -eq $branch_miaomiao_video ]  || [ $branch -eq $branch_xlkj ] || [ $branch -eq $branch_ym ] 
-    || [ $branch -eq $branch_jyb ] || [ $branch -eq $branch_ty ] ; then
+elif [ $branch -eq $branch_tctd ] || [ $branch -eq $branch_miaomiao_video ]  || [ $branch -eq $branch_xlkj ] || [ $branch -eq $branch_ym ] || [ $branch -eq $branch_jyb ] || [ $branch -eq $branch_ty ] || [ $branch -eq $branch_yq ] ; then
     setModule 0 1 1 1
 elif [[ $branch -eq $branch_dj ]]; then
     setModule 1 1 0 1
@@ -65,12 +68,16 @@ if [[ $branch -eq $branch_hz ]]; then
     branch_hz=1
 elif [[ $branch -eq $branch_dj ]]; then
     branch_dj=1
-elif [ $branch -eq $branch_tctd ] || [ $branch -eq $branch_miaomiao_video ]  || [ $branch -eq $branch_miaomiao_voice ] ; then
+elif [[ $branch -eq $branch_tctd ]]; then
+    branch_tctd=1
+elif [ $branch -eq $branch_miaomiao_video ]  || [ $branch -eq $branch_miaomiao_voice ] ; then
     branch_miaomiao=1
 elif [[ $branch -eq $branch_jjyy ]]; then
     branch_jjyy=1
 elif [ $branch -eq $branch_tyjh ] || [ $branch -eq $branch_ty ] ; then
     branch_ty=1
+elif [[ $branch -eq $branch_yq ]]; then
+    branch_yq=1
 fi
 
 if [ $branch -eq $branch_miaomiao_voice ]  || [ $branch -eq $branch_klkj ]   || [ $branch -eq $branch_jjyy ] ; then
@@ -82,4 +89,4 @@ if [[ $branch -eq $branch_jykt ]]; then
     softEncode=1
 fi
 
-# . /Users/wangzhiguo/Desktop/sh_warehouse/MoMo_Package/change.sh;
+. /Users/wangzhiguo/Downloads/Learns/MyGithubs/Android_ShellBuilding/SanTiYun/Stand_Sdk/change.sh;
